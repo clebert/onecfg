@@ -1,6 +1,6 @@
 {
   "name": "onecfg",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "One config to generate them all.",
   "bugs": {
     "url": "https://github.com/clebert/onecfg/issues"
