@@ -2,16 +2,8 @@
   "name": "onecfg",
   "version": "1.0.0",
   "description": "One config to generate them all.",
-  "bugs": {
-    "url": "https://github.com/clebert/onecfg/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/clebert/onecfg.git"
-  },
   "license": "MIT",
   "author": "Clemens Akens",
-  "sideEffects": false,
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "types": "lib/esm/index.d.ts",
