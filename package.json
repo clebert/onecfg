@@ -1,7 +1,7 @@
 {
   "name": "onecfg",
   "version": "1.0.0",
-  "description": "One config to generate them all.",
+  "description": "One config file to generate them all.",
   "license": "MIT",
   "author": "Clemens Akens",
   "main": "lib/cjs/index.js",

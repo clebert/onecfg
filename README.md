@@ -1,6 +1,6 @@
 # onecfg
 
-One config to generate them all.
+One config file to generate them all.
 
 ## Installation
 
