@@ -8,7 +8,7 @@ const predicate: Predicate<string> = (value: unknown): value is string =>
 
 const serializer: Serializer<string> = (value) => value.toUpperCase();
 
-describe(`onecfg`, () => {
+describe(`onecfg()`, () => {
   test(`generating multiple files`, () => {
     rimraf.sync(`test`);
 
