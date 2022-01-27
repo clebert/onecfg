@@ -5,5 +5,5 @@ One config file to generate them all.
 ## Installation
 
 ```
-npm install onecfg --save-dev
+npm install onecfg
 ```
