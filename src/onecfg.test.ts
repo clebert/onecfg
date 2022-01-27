@@ -6,39 +6,33 @@ import {onecfg} from './onecfg';
 const predicate: Predicate<string> = (value: unknown): value is string =>
   typeof value === `string`;
 
-const serializer: Serializer<string> = (value) => value;
+const serializer: Serializer<string> = (value) => value.toUpperCase();
 
-test(`onecfg`, () => {
-  rimraf.sync(`test`);
+describe(`onecfg`, () => {
+  test(`generating multiple files`, () => {
+    rimraf.sync(`test`);
 
-  onecfg(
-    {
-      definitions: [
-        {
-          path: `test/a.txt`,
-          content: {initialValue: `a0`, predicate, serializer},
-        },
-        {
-          path: `test/b.txt`,
-          content: {initialValue: `b0`, predicate, serializer},
-        },
-      ],
-    },
-    {
-      definitions: [
-        {
-          path: `test/c.txt`,
-          content: {initialValue: `c0`, predicate, serializer},
-        },
-      ],
-      contentChanges: [{path: `test/a.txt`, predicate, reducer: () => `a1`}],
-    },
-    {
-      contentChanges: [{path: `test/b.txt`, predicate, reducer: () => `b1`}],
-    },
-  );
+    onecfg(
+      {path: `test/a.txt`, predicate, replacer: () => `a1`},
+      {path: `test/a.txt`, predicate, replacer: () => `a2`},
+      {path: `test/b.txt`, predicate, replacer: () => `b1`},
+      {path: `test/d.txt`, predicate, replacer: () => `d1`},
+      {path: `test/a.txt`, content: `a0`, predicate, serializer},
+      {path: `test/b.txt`, content: `b0`, predicate, serializer},
+      {path: `test/c.txt`, content: `c0`, predicate, serializer},
+    );
 
-  expect(readFileSync(`test/a.txt`, {encoding: `utf-8`})).toBe(`a1`);
-  expect(readFileSync(`test/b.txt`, {encoding: `utf-8`})).toBe(`b1`);
-  expect(readFileSync(`test/c.txt`, {encoding: `utf-8`})).toBe(`c0`);
+    expect(readFileSync(`test/a.txt`, {encoding: `utf-8`})).toBe(`A2`);
+    expect(readFileSync(`test/b.txt`, {encoding: `utf-8`})).toBe(`B1`);
+    expect(readFileSync(`test/c.txt`, {encoding: `utf-8`})).toBe(`C0`);
+  });
+
+  test(`multiple file definitions`, () => {
+    expect(() =>
+      onecfg(
+        {path: `test/a.txt`, content: `a0`, predicate, serializer},
+        {path: `test/a.txt`, content: `a0`, predicate, serializer},
+      ),
+    ).toThrow(new Error(`multiple file definitions: test/a.txt`));
+  });
 });
