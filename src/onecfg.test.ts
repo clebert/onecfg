@@ -1,6 +1,6 @@
 import {readFileSync} from 'fs';
-import type {Predicate, Serializer} from '@onecfg/core';
 import rimraf from 'rimraf';
+import type {Predicate, Serializer} from './generate-content';
 import {onecfg} from './onecfg';
 
 const predicate: Predicate<string> = (value: unknown): value is string =>

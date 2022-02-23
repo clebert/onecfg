@@ -15,37 +15,33 @@
     "format": "prettier .",
     "format:check": "prettier . --check",
     "lint": "eslint .",
-    "prepare": "node onecfg.js",
     "release": "npm version",
     "postrelease": "git push --follow-tags",
     "test": "jest --silent"
   },
   "dependencies": {
+    "deepmerge": "^4.2.2",
+    "js-yaml": "^4.1.0",
     "mkdirp": "^1.0.4"
   },
   "devDependencies": {
-    "@onecfg/clebert": "^1.0.1",
-    "@onecfg/utils": "^1.1.1",
-    "@swc/core": "^1.2.143",
+    "@swc/core": "^1.2.145",
     "@swc/jest": "^0.2.17",
-    "@types/jest": "^27.4.0",
+    "@types/jest": "^27.4.1",
+    "@types/js-yaml": "^4.0.5",
     "@types/mkdirp": "^1.0.2",
-    "@types/node": "^17.0.12",
+    "@types/node": "^17.0.21",
     "@types/rimraf": "^3.0.2",
-    "@typescript-eslint/eslint-plugin": "^5.12.0",
-    "@typescript-eslint/parser": "^5.12.0",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-markdown": "^2.2.1",
     "jest": "^27.5.1",
     "npm-run-all": "^4.1.5",
-    "onecfg": "^2.0.0",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.5.5"
-  },
-  "peerDependencies": {
-    "@onecfg/core": "^2.0.0"
   }
 }

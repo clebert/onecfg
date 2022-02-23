@@ -1,8 +1,8 @@
 import {writeFileSync} from 'fs';
 import {dirname} from 'path';
-import type {FileChange, FileDefinition} from '@onecfg/core';
-import {generateContent} from '@onecfg/core';
 import mkdir from 'mkdirp';
+import type {FileChange, FileDefinition} from './generate-content';
+import {generateContent} from './generate-content';
 
 export type AnyFileStatement = FileDefinition<any> | FileChange<any>;
 
