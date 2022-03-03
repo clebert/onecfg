@@ -3,7 +3,7 @@ import type {
   FileChange,
   FileChangeOptions,
   FileDeclaration,
-} from './generate-content';
+} from './generate-content.js';
 
 export interface MergeContentOptions extends FileChangeOptions {
   readonly replaceArrays?: boolean;

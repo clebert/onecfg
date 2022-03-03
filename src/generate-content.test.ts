@@ -1,5 +1,9 @@
-import {generateContent} from './generate-content';
-import type {FileChange, FileDefinition, Predicate} from './generate-content';
+import type {
+  FileChange,
+  FileDefinition,
+  Predicate,
+} from './generate-content.js';
+import {generateContent} from './generate-content.js';
 
 type PredicateMock = Predicate<string> & jest.Mock;
 

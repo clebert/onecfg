@@ -1,7 +1,7 @@
-import {toYaml} from './to-yaml';
+import {toYaml} from './to-yaml.js';
 
 describe(`toYaml()`, () => {
-  test(`generates YAML without references`, () => {
+  test(`generating YAML without references`, () => {
     const baz = {baz: 1};
 
     expect(toYaml({foo: `a`, bar: [baz, baz]})).toBe(

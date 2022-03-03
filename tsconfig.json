@@ -9,19 +9,19 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strict": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "module": "ES2020",
+    "moduleResolution": "Node",
     "rootDir": "src",
     "declaration": true,
     "importsNotUsedAsValues": "error",
-    "outDir": "lib",
     "inlineSources": true,
+    "outDir": "lib",
     "sourceMap": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "lib": ["es2021"],
-    "target": "es2021"
+    "lib": ["ES2021"],
+    "target": "ES2021"
   },
   "include": ["**/*.ts", "**/*.tsx"]
 }

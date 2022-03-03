@@ -1,6 +1,6 @@
-import type {FileDefinition} from './generate-content';
-import {isObject} from './is-object';
-import {toJson} from './to-json';
+import type {FileDefinition} from './generate-content.js';
+import {isObject} from './is-object.js';
+import {toJson} from './to-json.js';
 
 export function defineJsonFile(
   path: string,

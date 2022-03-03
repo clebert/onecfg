@@ -1,6 +1,6 @@
-import type {FileDefinition} from './generate-content';
-import {isStringArray} from './is-string-array';
-import {toText} from './to-text';
+import type {FileDefinition} from './generate-content.js';
+import {isStringArray} from './is-string-array.js';
+import {toText} from './to-text.js';
 
 export function defineTextFile(
   path: string,

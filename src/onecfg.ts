@@ -1,8 +1,8 @@
 import {writeFileSync} from 'fs';
 import {dirname} from 'path';
 import mkdir from 'mkdirp';
-import type {FileChange, FileDefinition} from './generate-content';
-import {generateContent} from './generate-content';
+import type {FileChange, FileDefinition} from './generate-content.js';
+import {generateContent} from './generate-content.js';
 
 export type AnyFileStatement = FileDefinition<any> | FileChange<any>;
 

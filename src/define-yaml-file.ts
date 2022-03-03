@@ -1,6 +1,6 @@
-import type {FileDefinition} from './generate-content';
-import {isObject} from './is-object';
-import {toYaml} from './to-yaml';
+import type {FileDefinition} from './generate-content.js';
+import {isObject} from './is-object.js';
+import {toYaml} from './to-yaml.js';
 
 export function defineYamlFile(
   path: string,

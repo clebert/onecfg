@@ -1,9 +1,9 @@
-import {defineTextFile} from './define-text-file';
-import {generateContent} from './generate-content';
-import {replaceContent} from './replace-content';
+import {defineTextFile} from './define-text-file.js';
+import {generateContent} from './generate-content.js';
+import {replaceContent} from './replace-content.js';
 
 describe(`replaceContent()`, () => {
-  test(`replace content of a text file`, () => {
+  test(`replacing content of a text file`, () => {
     const textFile = defineTextFile(`file.txt`, [`a`]);
 
     expect(

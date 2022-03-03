@@ -1,12 +1,12 @@
-import {isStringArray} from './is-string-array';
+import {isStringArray} from './is-string-array.js';
 
 describe(`isStringArray()`, () => {
-  test(`returns true`, () => {
+  test(`returning true`, () => {
     expect(isStringArray([])).toBe(true);
     expect(isStringArray([`foo`])).toBe(true);
   });
 
-  test(`returns false`, () => {
+  test(`returning false`, () => {
     expect(isStringArray([1])).toBe(false);
     expect(isStringArray({})).toBe(false);
     expect(isStringArray(``)).toBe(false);

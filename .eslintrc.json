@@ -1,11 +1,13 @@
 {
   "root": true,
   "env": {"es2021": true},
+  "parserOptions": {"ecmaVersion": 2021, "sourceType": "module"},
   "plugins": ["eslint-plugin-import", "markdown", "@typescript-eslint"],
   "rules": {
     "complexity": "error",
     "curly": "error",
     "eqeqeq": ["error", "always", {"null": "ignore"}],
+    "import/extensions": ["error", "always", {"ignorePackages": true}],
     "import/no-extraneous-dependencies": "error",
     "import/order": [
       "error",
@@ -15,6 +17,7 @@
         "warnOnUnassignedImports": true
       }
     ],
+    "no-duplicate-imports": "error",
     "no-shadow": "error",
     "object-shorthand": "error",
     "prefer-const": "error",
@@ -37,11 +40,14 @@
           "error",
           {"prefer": "type-imports"}
         ],
+        "@typescript-eslint/no-duplicate-imports": "error",
         "@typescript-eslint/no-floating-promises": "error",
+        "@typescript-eslint/no-require-imports": "error",
         "@typescript-eslint/no-shadow": ["error", {"hoist": "all"}],
         "@typescript-eslint/promise-function-async": "error",
         "@typescript-eslint/quotes": ["error", "backtick"],
         "@typescript-eslint/require-await": "error",
+        "no-duplicate-imports": "off",
         "quotes": "off"
       }
     }

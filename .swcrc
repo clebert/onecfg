@@ -1,4 +1,4 @@
 {
-  "jsc": {"target": "es2021", "parser": {"syntax": "typescript"}},
+  "jsc": {"parser": {"syntax": "typescript"}, "target": "es2021"},
   "sourceMaps": true
 }

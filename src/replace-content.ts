@@ -2,7 +2,7 @@ import type {
   FileChange,
   FileChangeOptions,
   FileDeclaration,
-} from './generate-content';
+} from './generate-content.js';
 
 export function replaceContent<TContent>(
   fileDeclaration: FileDeclaration<TContent>,

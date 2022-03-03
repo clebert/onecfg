@@ -8,6 +8,8 @@
       "statements": 100
     }
   },
+  "extensionsToTreatAsEsm": [".ts", ".tsx"],
+  "moduleNameMapper": {"^(\\.{1,2}/.*)\\.js$": "$1"},
   "restoreMocks": true,
   "testMatch": ["**/src/**/*.test.{js,jsx,ts,tsx}"],
   "transform": {"^.+\\.tsx?$": ["@swc/jest"]}
