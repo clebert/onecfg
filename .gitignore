@@ -1,5 +1,15 @@
+.editorconfig
+.eslintrc.json
+.eslintignore
+jest.config.json
 coverage
-lib
 node_modules
-test
+.prettierrc.json
+.prettierignore
+.swcrc
+tsconfig.json
 tsconfig.tsbuildinfo
+lib
+.vscode/extensions.json
+.vscode/settings.json
+test

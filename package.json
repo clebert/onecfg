@@ -20,6 +20,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
+    "preprepare": "tsc --declaration --esModuleInterop --module es2020 --moduleResolution node --outDir lib src/index.ts ",
+    "prepare": "node onecfg.js",
     "release": "npm version",
     "postrelease": "git push --follow-tags",
     "test": "jest --silent"
@@ -30,6 +32,7 @@
     "mkdirp": "^1.0.4"
   },
   "devDependencies": {
+    "@onecfg/standard": "^1.0.0",
     "@swc/core": "^1.2.147",
     "@swc/jest": "^0.2.20",
     "@types/jest": "^27.4.1",
