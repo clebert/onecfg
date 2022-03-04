@@ -23,5 +23,5 @@
     "lib": ["ES2021"],
     "target": "ES2021"
   },
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["src/**/*"]
 }
