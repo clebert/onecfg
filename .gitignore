@@ -1,6 +1,7 @@
 .editorconfig
 .eslintrc.json
 .eslintignore
+test
 jest.config.json
 coverage
 node_modules
@@ -12,4 +13,3 @@ tsconfig.tsbuildinfo
 lib
 .vscode/extensions.json
 .vscode/settings.json
-test
