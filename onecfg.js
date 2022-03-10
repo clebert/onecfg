@@ -34,5 +34,5 @@ onecfg(
   ...prettier(),
   ...swc(),
   ...typescript({declaration: true, outDir: `lib`, sourceMap: true}),
-  ...vscode({includeAllFiles: false}),
+  ...vscode({showFilesInEditor: false}),
 );
