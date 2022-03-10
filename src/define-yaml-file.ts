@@ -1,10 +1,31 @@
 import type {FileDefinition} from './generate-content.js';
 import {isObject} from './is-object.js';
+import {toText} from './to-text.js';
 import {toYaml} from './to-yaml.js';
+
+export interface YamlFileOptions {
+  readonly headerComment?: string;
+}
 
 export function defineYamlFile(
   path: string,
-  content: object,
+  initialContent: object,
+  options: YamlFileOptions = {},
 ): FileDefinition<object> {
-  return {path, content, predicate: isObject, serializer: toYaml};
+  const headerComment = options.headerComment?.trim();
+
+  return {
+    path,
+    content: initialContent,
+    predicate: isObject,
+    serializer: (content) =>
+      toText(
+        headerComment
+          ? [
+              ...headerComment.split(`\n`).map((line) => `# ${line.trim()}`),
+              toYaml(content),
+            ]
+          : [toYaml(content)],
+      ),
+  };
 }

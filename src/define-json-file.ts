@@ -4,7 +4,12 @@ import {toJson} from './to-json.js';
 
 export function defineJsonFile(
   path: string,
-  content: object,
+  initialContent: object,
 ): FileDefinition<object> {
-  return {path, content, predicate: isObject, serializer: toJson};
+  return {
+    path,
+    content: initialContent,
+    predicate: isObject,
+    serializer: toJson,
+  };
 }
