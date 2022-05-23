@@ -4,6 +4,7 @@ import type {
   FileChangeOptions,
   FileDeclaration,
 } from './generate-content.js';
+import {replaceContent} from './replace-content.js';
 
 export interface MergeContentOptions extends FileChangeOptions {
   readonly replaceArrays?: boolean;
@@ -14,17 +15,15 @@ export function mergeContent<TContent extends object>(
   content: TContent,
   options: MergeContentOptions = {},
 ): FileChange<TContent> {
-  const {path, predicate} = fileDeclaration;
   const {replaceArrays, ...fileChangeOptions} = options;
 
-  return {
-    path,
-    predicate,
-    options: fileChangeOptions,
-    replacer: (previousContent) =>
+  return replaceContent(
+    fileDeclaration,
+    (previousContent) =>
       deepmerge(previousContent, content, {
         arrayMerge: (target, source) =>
           replaceArrays ? source : [...target, ...source],
       }),
-  };
+    fileChangeOptions,
+  );
 }
