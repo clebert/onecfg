@@ -6,7 +6,9 @@ import {generateContent} from './generate-content.js';
 
 export type AnyFileStatement = FileDefinition<any> | FileChange<any>;
 
-export function onecfg(...fileStatements: readonly AnyFileStatement[]): void {
+export function writeFiles(
+  ...fileStatements: readonly AnyFileStatement[]
+): void {
   const fileDefinitions = fileStatements.filter(
     (fileDeclaration): fileDeclaration is FileDefinition<any> =>
       `serializer` in fileDeclaration,
@@ -21,7 +23,7 @@ export function onecfg(...fileStatements: readonly AnyFileStatement[]): void {
 
   for (const {path} of fileDefinitions) {
     if (paths.has(path)) {
-      throw new Error(`multiple file definitions: ${path}`);
+      throw new Error(`Duplicate file definitions: ${path}`);
     }
 
     paths.add(path);

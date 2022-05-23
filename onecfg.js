@@ -15,9 +15,9 @@ import {
   typescript,
   vscode,
 } from '@onecfg/standard';
-import {onecfg} from './lib/index.js';
+import {writeFiles} from './lib/index.js';
 
-onecfg(
+writeFiles(
   ...editorconfig(),
   ...eslint(),
   ...git(),
