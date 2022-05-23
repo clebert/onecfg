@@ -23,7 +23,7 @@ export function writeFiles(
 
   for (const {path} of fileDefinitions) {
     if (paths.has(path)) {
-      throw new Error(`Duplicate file definitions: ${path}`);
+      throw new Error(`Duplicate file definition: ${path}`);
     }
 
     paths.add(path);

@@ -9,9 +9,16 @@ describe(`replaceContent()`, () => {
     expect(
       generateContent(
         textFile,
-        replaceContent(textFile, [`c`], {priority: 1}),
-        replaceContent(textFile, [`b`]),
+        replaceContent(
+          textFile,
+          (previousContent) => [...previousContent, `c`],
+          {priority: 1},
+        ),
+        replaceContent(textFile, (previousContent) => [
+          ...previousContent,
+          `b`,
+        ]),
       ),
-    ).toBe(`c\n`);
+    ).toBe(`a\nb\nc\n`);
   });
 });

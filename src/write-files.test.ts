@@ -27,12 +27,12 @@ describe(`writeFiles()`, () => {
     expect(readFileSync(`test/c.txt`, {encoding: `utf-8`})).toBe(`C0`);
   });
 
-  test(`duplicate file definitions`, () => {
+  test(`duplicate file definition`, () => {
     expect(() =>
       writeFiles(
         {path: `test/a.txt`, content: `a0`, predicate, serializer},
         {path: `test/a.txt`, content: `a0`, predicate, serializer},
       ),
-    ).toThrow(new Error(`Duplicate file definitions: test/a.txt`));
+    ).toThrow(new Error(`Duplicate file definition: test/a.txt`));
   });
 });
