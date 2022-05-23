@@ -42,7 +42,7 @@ export function generateContent(
   for (const fileChange of fileChanges) {
     if (!fileChange.predicate(content)) {
       throw new Error(
-        `incompatible file content to replace: ${fileDefinition.path}`,
+        `Incompatible file content to replace: ${fileDefinition.path}`,
       );
     }
 
@@ -51,7 +51,7 @@ export function generateContent(
 
   if (!fileDefinition.predicate(content)) {
     throw new Error(
-      `incompatible file content to serialize: ${fileDefinition.path}`,
+      `Incompatible file content to serialize: ${fileDefinition.path}`,
     );
   }
 
@@ -60,12 +60,12 @@ export function generateContent(
 
 function check(path: string): void {
   if (path.startsWith(`/`)) {
-    throw new Error(`file path must be relative: ${path}`);
+    throw new Error(`A file path must be relative: ${path}`);
   }
 
   for (const segment of path.split(`/`)) {
     if (segment === `.` || segment === `..`) {
-      throw new Error(`file path must be normalized: ${path}`);
+      throw new Error(`A file path must be normalized: ${path}`);
     }
   }
 }

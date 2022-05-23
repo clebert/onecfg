@@ -168,7 +168,7 @@ describe(`generateContent()`, () => {
         {path: `foo/bar`, content: `a`, predicate: predicate1, serializer},
         {path: `foo/bar`, predicate: predicate2, replacer},
       ),
-    ).toThrow(new Error(`incompatible file content to replace: foo/bar`));
+    ).toThrow(new Error(`Incompatible file content to replace: foo/bar`));
 
     expect(predicate1.mock.calls).toEqual([]);
     expect(serializer.mock.calls).toEqual([]);
@@ -187,7 +187,7 @@ describe(`generateContent()`, () => {
         {path: `foo/bar`, content: `a`, predicate: predicate1, serializer},
         {path: `foo/bar`, predicate: predicate2, replacer},
       ),
-    ).toThrow(new Error(`incompatible file content to serialize: foo/bar`));
+    ).toThrow(new Error(`Incompatible file content to serialize: foo/bar`));
 
     expect(predicate1.mock.calls).toEqual([[`ab`]]);
     expect(serializer.mock.calls).toEqual([]);
@@ -195,14 +195,14 @@ describe(`generateContent()`, () => {
     expect(replacer.mock.calls).toEqual([[`a`]]);
   });
 
-  test(`file path must be relative`, () => {
+  test(`a file path must be relative`, () => {
     const predicate = jest.fn() as PredicateMock;
     const serializer = jest.fn();
     const replacer = jest.fn();
 
     expect(() =>
       generateContent({path: `/foo/bar`, content: `a`, predicate, serializer}),
-    ).toThrow(new Error(`file path must be relative: /foo/bar`));
+    ).toThrow(new Error(`A file path must be relative: /foo/bar`));
 
     expect(() =>
       generateContent(
@@ -210,25 +210,25 @@ describe(`generateContent()`, () => {
         {path: `foo/baz`, predicate, replacer},
         {path: `/foo/qux`, predicate, replacer},
       ),
-    ).toThrow(new Error(`file path must be relative: /foo/qux`));
+    ).toThrow(new Error(`A file path must be relative: /foo/qux`));
 
     expect(predicate.mock.calls).toEqual([]);
     expect(serializer.mock.calls).toEqual([]);
     expect(replacer.mock.calls).toEqual([]);
   });
 
-  test(`file path must be normalized`, () => {
+  test(`a file path must be normalized`, () => {
     const predicate = jest.fn() as PredicateMock;
     const serializer = jest.fn();
     const replacer = jest.fn();
 
     expect(() =>
       generateContent({path: `./foo/bar`, content: `a`, predicate, serializer}),
-    ).toThrow(new Error(`file path must be normalized: ./foo/bar`));
+    ).toThrow(new Error(`A file path must be normalized: ./foo/bar`));
 
     expect(() =>
       generateContent({path: `foo/./bar`, content: `a`, predicate, serializer}),
-    ).toThrow(new Error(`file path must be normalized: foo/./bar`));
+    ).toThrow(new Error(`A file path must be normalized: foo/./bar`));
 
     expect(() =>
       generateContent({
@@ -237,7 +237,7 @@ describe(`generateContent()`, () => {
         predicate,
         serializer,
       }),
-    ).toThrow(new Error(`file path must be normalized: ../foo/bar`));
+    ).toThrow(new Error(`A file path must be normalized: ../foo/bar`));
 
     expect(() =>
       generateContent({
@@ -246,7 +246,7 @@ describe(`generateContent()`, () => {
         predicate,
         serializer,
       }),
-    ).toThrow(new Error(`file path must be normalized: foo/../bar`));
+    ).toThrow(new Error(`A file path must be normalized: foo/../bar`));
 
     expect(() =>
       generateContent(
@@ -254,7 +254,7 @@ describe(`generateContent()`, () => {
         {path: `foo/baz`, predicate, replacer},
         {path: `./foo/qux`, predicate, replacer},
       ),
-    ).toThrow(new Error(`file path must be normalized: ./foo/qux`));
+    ).toThrow(new Error(`A file path must be normalized: ./foo/qux`));
 
     expect(() =>
       generateContent(
@@ -262,7 +262,7 @@ describe(`generateContent()`, () => {
         {path: `foo/baz`, predicate, replacer},
         {path: `foo/./qux`, predicate, replacer},
       ),
-    ).toThrow(new Error(`file path must be normalized: foo/./qux`));
+    ).toThrow(new Error(`A file path must be normalized: foo/./qux`));
 
     expect(() =>
       generateContent(
@@ -270,7 +270,7 @@ describe(`generateContent()`, () => {
         {path: `foo/baz`, predicate, replacer},
         {path: `../foo/qux`, predicate, replacer},
       ),
-    ).toThrow(new Error(`file path must be normalized: ../foo/qux`));
+    ).toThrow(new Error(`A file path must be normalized: ../foo/qux`));
 
     expect(() =>
       generateContent(
@@ -278,7 +278,7 @@ describe(`generateContent()`, () => {
         {path: `foo/baz`, predicate, replacer},
         {path: `foo/../qux`, predicate, replacer},
       ),
-    ).toThrow(new Error(`file path must be normalized: foo/../qux`));
+    ).toThrow(new Error(`A file path must be normalized: foo/../qux`));
 
     expect(predicate.mock.calls).toEqual([]);
     expect(serializer.mock.calls).toEqual([]);
