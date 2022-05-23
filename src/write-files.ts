@@ -4,11 +4,9 @@ import mkdir from 'mkdirp';
 import type {FileChange, FileDefinition} from './generate-content.js';
 import {generateContent} from './generate-content.js';
 
-export type AnyFileStatement = FileDefinition<any> | FileChange<any>;
+export type FileStatement = FileDefinition<any> | FileChange<any>;
 
-export function writeFiles(
-  ...fileStatements: readonly AnyFileStatement[]
-): void {
+export function writeFiles(...fileStatements: readonly FileStatement[]): void {
   const fileDefinitions = fileStatements.filter(
     (fileDeclaration): fileDeclaration is FileDefinition<any> =>
       `serializer` in fileDeclaration,
