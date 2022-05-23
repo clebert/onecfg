@@ -34,5 +34,5 @@ writeFiles(
   ...prettier(),
   ...swc(),
   ...typescript({declaration: true, outDir: `lib`, sourceMap: true}),
-  ...vscode({showFilesInEditor: false}),
+  ...vscode({showAllFilesInEditor: false}),
 );
