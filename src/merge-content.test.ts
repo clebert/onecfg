@@ -18,6 +18,21 @@ describe(`mergeContent()`, () => {
     ).toEqual(toJson({foo: {bar: `c`}, baz: [1, 2, 3]}));
   });
 
+  test(`merging content of a YAML file where arrays are deduped`, () => {
+    const yamlFile = defineYamlFile(`file.yml`, {foo: {bar: `a`}, baz: [1, 1]});
+
+    expect(
+      generateContent(
+        yamlFile,
+        mergeContent(
+          yamlFile,
+          {foo: {bar: `b`}, baz: [2, 2]},
+          {dedupeArrays: true},
+        ),
+      ),
+    ).toEqual(toYaml({foo: {bar: `b`}, baz: [1, 2]}));
+  });
+
   test(`merging content of a YAML file where arrays are replaced`, () => {
     const yamlFile = defineYamlFile(`file.yml`, {foo: {bar: `a`}, baz: [1]});
 
@@ -28,6 +43,21 @@ describe(`mergeContent()`, () => {
           yamlFile,
           {foo: {bar: `b`}, baz: [2]},
           {replaceArrays: true},
+        ),
+      ),
+    ).toEqual(toYaml({foo: {bar: `b`}, baz: [2]}));
+  });
+
+  test(`merging content of a YAML file where arrays are deduped and replaced`, () => {
+    const yamlFile = defineYamlFile(`file.yml`, {foo: {bar: `a`}, baz: [1]});
+
+    expect(
+      generateContent(
+        yamlFile,
+        mergeContent(
+          yamlFile,
+          {foo: {bar: `b`}, baz: [2, 2]},
+          {dedupeArrays: true, replaceArrays: true},
         ),
       ),
     ).toEqual(toYaml({foo: {bar: `b`}, baz: [2]}));
