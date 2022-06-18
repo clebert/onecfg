@@ -3,14 +3,14 @@ import {isObject} from './is-object.js';
 import {toText} from './to-text.js';
 import {toYaml} from './to-yaml.js';
 
-export interface YamlFileOptions {
+export interface DefineYamlFileOptions {
   readonly headerComment?: string;
 }
 
 export function defineYamlFile(
   path: string,
   initialContent: object,
-  options: YamlFileOptions = {},
+  options: DefineYamlFileOptions = {},
 ): FileDefinition<object> {
   const headerComment = options.headerComment?.trim();
 

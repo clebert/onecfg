@@ -1,4 +1,4 @@
-import {readFileSync} from 'fs';
+import {readFileSync} from 'node:fs';
 import rimraf from 'rimraf';
 import type {Predicate, Serializer} from './generate-content.js';
 import {writeFiles} from './write-files.js';

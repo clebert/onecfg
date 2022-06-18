@@ -1,5 +1,5 @@
-import {writeFileSync} from 'fs';
-import {dirname} from 'path';
+import {writeFileSync} from 'node:fs';
+import {dirname} from 'node:path';
 import mkdir from 'mkdirp';
 import type {FileChange, FileDefinition} from './generate-content.js';
 import {generateContent} from './generate-content.js';
