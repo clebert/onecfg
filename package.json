@@ -15,17 +15,17 @@
     "lib"
   ],
   "scripts": {
-    "ci": "run-p check-types compile format:check lint test",
-    "check-types": "tsc --pretty",
-    "compile": "tsc --pretty --project tsconfig.emit.json",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "lint": "eslint .",
-    "preprepare": "tsc --declaration --esModuleInterop --module node16 --moduleResolution node16 --outDir lib src/index.ts ",
+    "preprepare": "tsc --declaration --esModuleInterop --module node16 --outDir lib src/index.ts",
     "prepare": "node onecfg.js",
+    "ci": "run-p compile:check compile:emit format:check lint test",
+    "compile:check": "tsc --pretty",
+    "compile:emit": "tsc --pretty --project tsconfig.emit.json",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint": "eslint .",
+    "test": "jest --silent --passWithNoTests",
     "release": "npm version",
-    "postrelease": "git push --follow-tags",
-    "test": "jest --silent"
+    "postrelease": "git push --follow-tags"
   },
   "dependencies": {
     "deepmerge": "^4.2.2",
@@ -33,7 +33,7 @@
     "mkdirp": "^1.0.4"
   },
   "devDependencies": {
-    "@onecfg/standard": "^5.0.0",
+    "@onecfg/standard": "^5.1.0",
     "@swc/core": "^1.2.204",
     "@swc/jest": "^0.2.21",
     "@types/jest": "^28.1.2",
