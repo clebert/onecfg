@@ -18,7 +18,7 @@ export interface FileChange<TContent> extends FileDeclaration<TContent> {
 }
 
 export interface FileChangeOptions {
-  readonly priority?: -1 | 0 | 1;
+  readonly priority?: number;
 }
 
 export type Replacer<TContent> = (previousContent: TContent) => TContent;
