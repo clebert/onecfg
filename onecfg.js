@@ -3,6 +3,7 @@ import {
   eslint,
   git,
   github,
+  ignore,
   jest,
   node,
   npm,
@@ -20,6 +21,7 @@ writeFiles(
   ...eslint(),
   ...git(),
   ...github(),
+  ...ignore(`test`),
   ...jest(),
   ...node({nodeVersion: `18`}),
   ...npm(),
@@ -27,9 +29,6 @@ writeFiles(
   ...swc({target}),
   ...typescript({target, emit: true}),
   ...vscode({includeFilesInExplorer: false}),
-
-  git.ignore(`test`),
-  prettier.ignore(`test`),
 
   mergeContent(npm.packageFile, {
     scripts: {
