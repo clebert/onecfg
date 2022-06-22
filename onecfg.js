@@ -3,7 +3,6 @@ import {
   eslint,
   git,
   github,
-  ignore,
   jest,
   node,
   npm,
@@ -12,7 +11,7 @@ import {
   typescript,
   vscode,
 } from '@onecfg/standard';
-import {writeFiles} from './lib/index.js';
+import {mergeContent, writeFiles} from './lib/index.js';
 
 const target = `es2022`;
 
@@ -21,7 +20,6 @@ writeFiles(
   ...eslint(),
   ...git(),
   ...github(),
-  ...ignore(`test`),
   ...jest(),
   ...node({nodeVersion: `18`}),
   ...npm(),
@@ -29,4 +27,13 @@ writeFiles(
   ...swc({target}),
   ...typescript({target, emit: true}),
   ...vscode({includeFilesInExplorer: false}),
+
+  git.ignore(`test`),
+  prettier.ignore(`test`),
+
+  mergeContent(npm.packageFile, {
+    scripts: {
+      preprepare: `tsc --declaration --esModuleInterop --module node16 --outDir lib src/index.ts`,
+    },
+  }),
 );

@@ -33,7 +33,7 @@
     "mkdirp": "^1.0.4"
   },
   "devDependencies": {
-    "@onecfg/standard": "^5.1.0",
+    "@onecfg/standard": "^6.0.0",
     "@swc/core": "^1.2.204",
     "@swc/jest": "^0.2.21",
     "@types/jest": "^28.1.2",
