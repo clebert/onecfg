@@ -1,3 +1,4 @@
+import {describe, expect, test} from '@jest/globals';
 import {isObject} from './is-object.js';
 
 describe(`isObject()`, () => {

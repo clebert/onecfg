@@ -1,3 +1,4 @@
+import {describe, expect, test} from '@jest/globals';
 import {defineJsonFile} from './define-json-file.js';
 import {defineYamlFile} from './define-yaml-file.js';
 import {generateContent} from './generate-content.js';

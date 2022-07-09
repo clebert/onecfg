@@ -1,4 +1,5 @@
 import {readFileSync} from 'node:fs';
+import {describe, expect, test} from '@jest/globals';
 import rimraf from 'rimraf';
 import type {Predicate, Serializer} from './generate-content.js';
 import {writeFiles} from './write-files.js';

@@ -1,3 +1,4 @@
+import {describe, expect, test} from '@jest/globals';
 import {defineTextFile} from './define-text-file.js';
 import {generateContent} from './generate-content.js';
 import {replaceContent} from './replace-content.js';

@@ -1,3 +1,4 @@
+import {describe, expect, test} from '@jest/globals';
 import {toJson} from './to-json.js';
 
 describe(`toJson()`, () => {

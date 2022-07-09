@@ -1,20 +1,25 @@
+import {describe, expect, jest, test} from '@jest/globals';
 import type {
   FileChange,
   FileDefinition,
   Predicate,
+  Replacer,
+  Serializer,
 } from './generate-content.js';
 import {generateContent} from './generate-content.js';
 
-type PredicateMock = Predicate<string> & jest.Mock;
+type PredicateMock = Predicate<string> & ReturnType<typeof jest.fn>;
+type ReplacerMock = Replacer<string> & ReturnType<typeof jest.fn>;
+type SerializerMock = Serializer<string> & ReturnType<typeof jest.fn>;
 
 describe(`generateContent()`, () => {
   test(`no change in file content`, () => {
     const barPredicate = jest.fn(() => true) as PredicateMock;
     const barSerializer = jest.fn((content: string) => content.toUpperCase());
     const bazPredicate = jest.fn() as PredicateMock;
-    const bazReplacer = jest.fn();
+    const bazReplacer = jest.fn() as ReplacerMock;
     const quxPredicate = jest.fn() as PredicateMock;
-    const quxReplacer = jest.fn();
+    const quxReplacer = jest.fn() as ReplacerMock;
 
     const barDefinition1: FileDefinition<string> = {
       path: `foo/bar`,
@@ -61,9 +66,9 @@ describe(`generateContent()`, () => {
     const barReplacer5 = jest.fn((content) => `${content}f`);
     const barReplacer6 = jest.fn((content) => `${content}g`);
     const bazPredicate = jest.fn() as PredicateMock;
-    const bazReplacer = jest.fn();
+    const bazReplacer = jest.fn() as ReplacerMock;
     const quxPredicate = jest.fn() as PredicateMock;
-    const quxReplacer = jest.fn();
+    const quxReplacer = jest.fn() as ReplacerMock;
 
     const barDefinition: FileDefinition<string> = {
       path: `foo/bar`,
@@ -160,8 +165,8 @@ describe(`generateContent()`, () => {
   test(`incompatible file content to replace`, () => {
     const predicate1 = jest.fn() as PredicateMock;
     const predicate2 = jest.fn(() => false) as PredicateMock;
-    const serializer = jest.fn();
-    const replacer = jest.fn();
+    const serializer = jest.fn() as SerializerMock;
+    const replacer = jest.fn() as ReplacerMock;
 
     expect(() =>
       generateContent(
@@ -179,8 +184,8 @@ describe(`generateContent()`, () => {
   test(`incompatible file content to serialize`, () => {
     const predicate1 = jest.fn(() => false) as PredicateMock;
     const predicate2 = jest.fn(() => true) as PredicateMock;
-    const serializer = jest.fn();
-    const replacer = jest.fn((content) => `${content}b`);
+    const serializer = jest.fn() as SerializerMock;
+    const replacer = jest.fn((content) => `${content}b`) as ReplacerMock;
 
     expect(() =>
       generateContent(
@@ -197,8 +202,8 @@ describe(`generateContent()`, () => {
 
   test(`a file path must be relative`, () => {
     const predicate = jest.fn() as PredicateMock;
-    const serializer = jest.fn();
-    const replacer = jest.fn();
+    const serializer = jest.fn() as SerializerMock;
+    const replacer = jest.fn() as ReplacerMock;
 
     expect(() =>
       generateContent({path: `/foo/bar`, content: `a`, predicate, serializer}),
@@ -219,8 +224,8 @@ describe(`generateContent()`, () => {
 
   test(`a file path must be normalized`, () => {
     const predicate = jest.fn() as PredicateMock;
-    const serializer = jest.fn();
-    const replacer = jest.fn();
+    const serializer = jest.fn() as SerializerMock;
+    const replacer = jest.fn() as ReplacerMock;
 
     expect(() =>
       generateContent({path: `./foo/bar`, content: `a`, predicate, serializer}),

@@ -11,6 +11,7 @@ import {
   swc,
   typescript,
   vscode,
+  wallaby,
 } from '@onecfg/standard';
 import {mergeContent, writeFiles} from './lib/index.js';
 
@@ -29,6 +30,7 @@ writeFiles(
   ...swc({target}),
   ...typescript({target, emit: true}),
   ...vscode({includeFilesInExplorer: false}),
+  ...wallaby(),
 
   mergeContent(npm.packageFile, {
     scripts: {

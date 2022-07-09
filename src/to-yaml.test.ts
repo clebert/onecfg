@@ -1,3 +1,4 @@
+import {describe, expect, test} from '@jest/globals';
 import {toYaml} from './to-yaml.js';
 
 describe(`toYaml()`, () => {

@@ -1,3 +1,4 @@
+import {describe, expect, test} from '@jest/globals';
 import {toText} from './to-text.js';
 
 describe(`toText()`, () => {

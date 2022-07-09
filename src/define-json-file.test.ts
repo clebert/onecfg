@@ -1,4 +1,5 @@
 import {writeFileSync} from 'node:fs';
+import {describe, expect, test} from '@jest/globals';
 import mkdir from 'mkdirp';
 import rimraf from 'rimraf';
 import {defineJsonFile} from './define-json-file.js';
